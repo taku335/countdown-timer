@@ -1,0 +1,279 @@
+:root {
+  color-scheme: light;
+  font-family: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", sans-serif;
+  background-color: #f3f4f7;
+  color: #1d2433;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #eef1f6;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.page {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 48px 20px 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.hero {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 32px 36px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  box-shadow: 0 20px 45px rgba(18, 27, 50, 0.08);
+}
+
+.hero h1 {
+  margin: 8px 0 12px;
+  font-size: 32px;
+}
+
+.eyebrow {
+  margin: 0;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #6b7485;
+}
+
+.lead {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #3b455a;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 20px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-weight: 600;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 20px rgba(15, 22, 40, 0.12);
+}
+
+.button.primary {
+  background: #1d5eff;
+  color: #fff;
+}
+
+.button.ghost {
+  background: #f1f4fb;
+  color: #1d2433;
+  border-color: #d7deee;
+}
+
+.card {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 28px 32px;
+  box-shadow: 0 16px 36px rgba(18, 27, 50, 0.07);
+}
+
+.grid-two {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.feature-list {
+  margin: 16px 0 0;
+  padding-left: 18px;
+  color: #3a4356;
+  line-height: 1.7;
+}
+
+.note {
+  background: #f6f8fd;
+  padding: 20px;
+  border-radius: 16px;
+}
+
+.note h3 {
+  margin-top: 0;
+}
+
+.display-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.display-header label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-weight: 600;
+  color: #2c3444;
+}
+
+.display-header input,
+.form-block input,
+.form-block select {
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid #ccd4e5;
+  background: #fff;
+  font-size: 14px;
+}
+
+.demo-note {
+  margin: 0;
+  color: #6c768a;
+  font-size: 13px;
+}
+
+.display-title {
+  margin: 24px 0 16px;
+  font-size: 24px;
+}
+
+.time-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.time-card {
+  background: #f5f7fc;
+  border-radius: 16px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-weight: 600;
+  color: #2c3444;
+}
+
+.time-card strong {
+  font-size: 22px;
+}
+
+.time-card.highlight {
+  background: #1d5eff;
+  color: #fff;
+}
+
+.time-card.highlight strong {
+  font-size: 26px;
+}
+
+.form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.form-block {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.form-block label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-weight: 600;
+}
+
+.quick-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.quick-buttons button {
+  border: 1px solid #ccd4e5;
+  background: #f8f9fc;
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.quick-buttons button:hover {
+  background: #edf2ff;
+  border-color: #1d5eff;
+}
+
+.hint {
+  margin: 0;
+  color: #6b7485;
+  font-size: 13px;
+}
+
+.theme-sunset .time-card.highlight {
+  background: linear-gradient(135deg, #ff8c42, #ff5f6d);
+}
+
+.theme-ocean .time-card.highlight {
+  background: linear-gradient(135deg, #2b7bff, #00c2d1);
+}
+
+.theme-forest .time-card.highlight {
+  background: linear-gradient(135deg, #2f9d6a, #6bc23e);
+}
+
+.theme-midnight .time-card.highlight {
+  background: linear-gradient(135deg, #30304f, #2b6eff);
+}
+
+@media (max-width: 900px) {
+  .hero {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .grid-two,
+  .form,
+  .time-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero,
+  .card {
+    padding: 24px;
+  }
+
+  .hero-actions {
+    width: 100%;
+  }
+
+  .button {
+    width: 100%;
+  }
+}
