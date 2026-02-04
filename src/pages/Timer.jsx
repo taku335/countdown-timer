@@ -1,5 +1,4 @@
 import { useEffect, useMemo, useState } from 'react';
-import { Link } from 'react-router-dom';
 
 const colorOptions = [
   { value: 'sunset', label: '夕焼け (橙)', className: 'theme-sunset' },
@@ -54,42 +53,18 @@ const Timer = () => {
   const remainingMs = endDate ? endDate.getTime() - now.getTime() : 0;
   const remainingLabel = endDate ? toDuration(remainingMs) : '--:--:--';
 
-  const handleQuickSet = (minutes) => {
-    const target = new Date();
-    target.setMinutes(target.getMinutes() + minutes);
-    setEndTime(formatTime(target));
-  };
-
   const themeClass = colorOptions.find((option) => option.value === theme)?.className;
 
   return (
     <div className={`page ${themeClass}`}>
-      <header className="hero hero-timer">
+      <header className="hero">
         <div className="hero-content">
-          <span className="badge">研修用タイマー</span>
-          <h1>時刻通知ビュー</h1>
-          <p className="lead">
-            現在時刻と終了時刻を同時に表示し、残り時間を1秒ごとに更新します。
-          </p>
-          <div className="hero-actions">
-            <Link className="button ghost" to="/">
-              トップへ戻る
-            </Link>
-          </div>
-        </div>
-        <div className="hero-status">
-          <div>
-            <span className="status-label">テーマ</span>
-            <strong>{colorOptions.find((option) => option.value === theme)?.label}</strong>
-          </div>
-          <div>
-            <span className="status-label">残り</span>
-            <strong>{remainingLabel}</strong>
-          </div>
+          <h1>カウントダウンタイマー</h1>
+          <p className="lead">残り時間を見やすく表示します。</p>
         </div>
       </header>
 
-      <section className="card display glass">
+      <section className="card display">
         <div className="display-header">
           <label>
             タイトル
@@ -100,10 +75,6 @@ const Timer = () => {
               placeholder="例: 午後研修"
             />
           </label>
-          <div className="display-meta">
-            <p className="demo-note">※ 本画面はデモです。データは保存されません。</p>
-            <span className="pill">ライブ更新</span>
-          </div>
         </div>
         <h2 className="display-title">{title || 'タイトル未設定'}</h2>
         <div className="time-grid">
@@ -122,7 +93,7 @@ const Timer = () => {
         </div>
       </section>
 
-      <section className="card form glass">
+      <section className="card form">
         <div className="form-block">
           <label>
             終了時刻
@@ -133,13 +104,6 @@ const Timer = () => {
               onChange={(event) => setEndTime(event.target.value)}
             />
           </label>
-          <div className="quick-buttons">
-            {[10, 15, 30, 60].map((minutes) => (
-              <button key={minutes} type="button" onClick={() => handleQuickSet(minutes)}>
-                {minutes}分後
-              </button>
-            ))}
-          </div>
         </div>
         <div className="form-block">
           <label>
@@ -152,7 +116,6 @@ const Timer = () => {
               ))}
             </select>
           </label>
-          <p className="hint">終了後の画面配色のイメージを選択できます。</p>
         </div>
       </section>
     </div>
