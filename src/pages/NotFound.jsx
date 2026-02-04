@@ -6,13 +6,9 @@ const NotFound = () => (
       <div>
         <p className="eyebrow">404</p>
         <h1>ページが見つかりません</h1>
-        <p className="lead">
-          指定されたページは存在しないか、移動した可能性があります。URLをご確認ください。
-        </p>
-      </div>
-      <div className="hero-actions">
-        <Link className="button primary" to="/">
-          トップへ戻る
+        <p className="lead">指定されたページは存在しない可能性があります。</p>
+        <Link className="text-link" to="/">
+          タイマーへ戻る
         </Link>
       </div>
     </header>
