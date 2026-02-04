@@ -13,14 +13,12 @@ const pad = (value) => String(value).padStart(2, '0');
 const formatTime = (date) =>
   `${pad(date.getHours())}:${pad(date.getMinutes())}:${pad(date.getSeconds())}`;
 
-const formatShort = (date) => `${pad(date.getHours())}:${pad(date.getMinutes())}`;
-
 const buildEndDate = (timeString) => {
   if (!timeString) return null;
-  const [hour, minute] = timeString.split(':').map(Number);
-  if (Number.isNaN(hour) || Number.isNaN(minute)) return null;
+  const [hour, minute, second = 0] = timeString.split(':').map(Number);
+  if (Number.isNaN(hour) || Number.isNaN(minute) || Number.isNaN(second)) return null;
   const end = new Date();
-  end.setHours(hour, minute, 0, 0);
+  end.setHours(hour, minute, second, 0);
   return end;
 };
 
@@ -41,7 +39,7 @@ const Timer = () => {
   useEffect(() => {
     const initial = new Date();
     initial.setMinutes(initial.getMinutes() + 30);
-    setEndTime(formatShort(initial));
+    setEndTime(formatTime(initial));
   }, []);
 
   useEffect(() => {
@@ -59,7 +57,7 @@ const Timer = () => {
   const handleQuickSet = (minutes) => {
     const target = new Date();
     target.setMinutes(target.getMinutes() + minutes);
-    setEndTime(formatShort(target));
+    setEndTime(formatTime(target));
   };
 
   const themeClass = colorOptions.find((option) => option.value === theme)?.className;
@@ -102,7 +100,7 @@ const Timer = () => {
           </div>
           <div className="time-card">
             <span>終了時刻</span>
-            <strong>{endDate ? formatShort(endDate) : '--:--'}</strong>
+            <strong>{endDate ? formatTime(endDate) : '--:--:--'}</strong>
           </div>
           <div className="time-card highlight">
             <span>残り時間</span>
@@ -117,6 +115,7 @@ const Timer = () => {
             終了時刻
             <input
               type="time"
+              step="1"
               value={endTime}
               onChange={(event) => setEndTime(event.target.value)}
             />
