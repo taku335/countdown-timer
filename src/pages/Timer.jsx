@@ -34,6 +34,7 @@ const Timer = () => {
   const [theme, setTheme] = useState(colorOptions[0].value);
   const [endTime, setEndTime] = useState('');
   const [now, setNow] = useState(new Date());
+  const quickMinutes = [5, 15, 30, 60];
 
   useEffect(() => {
     const initial = new Date();
@@ -54,6 +55,11 @@ const Timer = () => {
   const remainingLabel = endDate ? toDuration(remainingMs) : '--:--:--';
 
   const themeClass = colorOptions.find((option) => option.value === theme)?.className;
+  const applyQuickSetting = (minutes) => {
+    const target = new Date();
+    target.setMinutes(target.getMinutes() + minutes);
+    setEndTime(formatTime(target));
+  };
 
   return (
     <div className={`page ${themeClass}`}>
@@ -104,6 +110,21 @@ const Timer = () => {
               onChange={(event) => setEndTime(event.target.value)}
             />
           </label>
+          <p className="form-note">
+            設定時刻（秒まで表示）: {endDate ? formatTime(endDate) : '--:--:--'}
+          </p>
+          <div className="quick-buttons">
+            {quickMinutes.map((minutes) => (
+              <button
+                key={minutes}
+                type="button"
+                className="quick-button"
+                onClick={() => applyQuickSetting(minutes)}
+              >
+                {minutes}分
+              </button>
+            ))}
+          </div>
         </div>
         <div className="form-block">
           <label>
