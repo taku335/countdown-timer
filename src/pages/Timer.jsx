@@ -64,22 +64,32 @@ const Timer = () => {
 
   return (
     <div className={`page ${themeClass}`}>
-      <header className="hero">
-        <div>
-          <p className="eyebrow">研修用タイマー</p>
+      <header className="hero hero-timer">
+        <div className="hero-content">
+          <span className="badge">研修用タイマー</span>
           <h1>時刻通知ビュー</h1>
           <p className="lead">
             現在時刻と終了時刻を同時に表示し、残り時間を1秒ごとに更新します。
           </p>
+          <div className="hero-actions">
+            <Link className="button ghost" to="/">
+              トップへ戻る
+            </Link>
+          </div>
         </div>
-        <div className="hero-actions">
-          <Link className="button ghost" to="/">
-            トップへ戻る
-          </Link>
+        <div className="hero-status">
+          <div>
+            <span className="status-label">テーマ</span>
+            <strong>{colorOptions.find((option) => option.value === theme)?.label}</strong>
+          </div>
+          <div>
+            <span className="status-label">残り</span>
+            <strong>{remainingLabel}</strong>
+          </div>
         </div>
       </header>
 
-      <section className="card display">
+      <section className="card display glass">
         <div className="display-header">
           <label>
             タイトル
@@ -90,7 +100,10 @@ const Timer = () => {
               placeholder="例: 午後研修"
             />
           </label>
-          <p className="demo-note">※ 本画面はデモです。データは保存されません。</p>
+          <div className="display-meta">
+            <p className="demo-note">※ 本画面はデモです。データは保存されません。</p>
+            <span className="pill">ライブ更新</span>
+          </div>
         </div>
         <h2 className="display-title">{title || 'タイトル未設定'}</h2>
         <div className="time-grid">
@@ -109,7 +122,7 @@ const Timer = () => {
         </div>
       </section>
 
-      <section className="card form">
+      <section className="card form glass">
         <div className="form-block">
           <label>
             終了時刻
