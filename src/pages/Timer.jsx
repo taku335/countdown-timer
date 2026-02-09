@@ -92,7 +92,7 @@ const Timer = () => {
             <span>終了時刻</span>
             <strong>{endDate ? formatTime(endDate) : '--:--:--'}</strong>
           </div>
-          <div className="time-card highlight">
+          <div className="time-card highlight remaining">
             <span>残り時間</span>
             <strong>{remainingLabel}</strong>
           </div>
